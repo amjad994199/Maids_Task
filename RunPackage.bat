@@ -1,0 +1,1 @@
+"C:\Users\ORIENT\AppData\Local\Programs\UiPath\Studio\UiRobot.exe" --package "C:\Users\ORIENT\Desktop\maids\Task_Maids.1.0.1.nupkg"

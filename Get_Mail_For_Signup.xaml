@@ -1,0 +1,915 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Mail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugagf="clr-namespace:UiPath.GSuite.Activities.Gmail.Filters;assembly=UiPath.GSuite.Activities" xmlns:ugagm="clr-namespace:UiPath.GSuite.Activities.Gmail.Models;assembly=UiPath.GSuite.Activities" xmlns:ugm="clr-namespace:UiPath.GSuite.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="IN_Str_Hideme_Signup_Url" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Str_Hide_me_Email" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Str_User_Name" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Str_Hideme_Password" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Activation_Email_subject" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Account_Registration_Subject" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Request_to_Reset_Password" Type="InArgument(x:String)" />
+    <x:Property Name="IN_Str_Logout" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2176.8,9794.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Get_Mail_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.GSuite.Models</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Shared.Api.Google.Gmail.Models</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Filters</x:String>
+      <x:String>UiPath.GSuite.Activities.Filters</x:String>
+      <x:String>UiPath.GSuite.Gmail.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="&quot;This workflow navigates to the account registration page of hide.me, enters the email, and then retrieves the activation email if it is a new account, or the password reset email if the email is already registered. Then it receives the password reset email.&quot;" DisplayName="Get_Mail" sap:VirtualizedContainerService.HintSize="2187.2,9729.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Str_ResetMail_Body" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="2124.8,9609.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:List(ugm:GmailMessage)" Name="list_mail_act" />
+        <Variable x:TypeArguments="x:String" Name="str_ActivateMail_Body" />
+        <Variable x:TypeArguments="x:String" Name="Str_RegistrationMail_Body" />
+        <Variable x:TypeArguments="x:String" Name="Str_ResetMail_Body" />
+        <Variable x:TypeArguments="x:String" Name="Str_Activat_Url" />
+        <Variable x:TypeArguments="x:String" Name="str_Regist_Url" />
+        <Variable x:TypeArguments="x:String" Default="amjadmaani846@gmail.com" Name="Str_Email" />
+        <Variable x:TypeArguments="x:Boolean" Name="Boll_login" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2062.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Start of account registration&quot;]" />
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2062.4,9275.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch.Try>
+          <Sequence sap:VirtualizedContainerService.HintSize="2025.6,9012" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Sign up | hide.me" sap:VirtualizedContainerService.HintSize="1963.2,886.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="094738c6-21cd-4387-876a-f21c7a0512c2" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,597.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="353.6,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                    <uix:NGoToUrl DisplayName="Go To URL hide.me signup" sap:VirtualizedContainerService.HintSize="353.6,114.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[IN_Str_Hideme_Signup_Url]" Version="V3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGoToUrl>
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Sign up'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="353.6,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="094738c6-21cd-4387-876a-f21c7a0512c2" Text="[IN_Str_Hide_me_Email]" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/register" CVScreenId="e10850b9-8fad-428f-a45b-7b70e4b356b4" CvElementArea="648, 480, 619, 78" CvType="InputBox" DesignTimeRectangle="652, 483, 613, 74" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='user_register_email' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='user_register_email' tag='INPUT' type='text' class='form-control js-registration_email' placeholder='Email address' aaname='Email address' /&gt;" Guid="edb10541-ec6e-4977-8340-2ce9bba32c84" InformativeScreenshot="6ff8b086507cbf4837b868a580fec391.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign up | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="e10850b9-8fad-428f-a45b-7b70e4b356b4" CvTextArea="916, 435, 83, 27" CvTextArgument="Sign up" CvType="Text" DesignTimeRectangle="652, 430, 613, 34" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='H1' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' class='page-member__form__title' aaname='Sign up' check:innerText='Sign up' /&gt;" Guid="75ce7ce3-0d42-4606-aa03-aab4efe0254c" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NTypeInto.Target>
+                      <uix:NTypeInto.VerifyOptions>
+                        <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionTypeIntoOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionTypeIntoOptions.Retry>
+                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                        </uix:VerifyExecutionTypeIntoOptions>
+                      </uix:NTypeInto.VerifyOptions>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NTypeInto>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Register'" sap:VirtualizedContainerService.HintSize="353.6,49.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="094738c6-21cd-4387-876a-f21c7a0512c2" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/register" CVScreenId="ff02c7d5-f322-403d-9634-40287441e7d2" CvElementArea="649, 579, 617, 82" CvTextArea="911, 610, 93, 28" CvTextArgument="Register" CvType="Button" DesignTimeRectangle="652, 582, 613, 77" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='user_register_save' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='user_register_save' tag='BUTTON' type='submit' class='submit-btn js-registration_btn' aaname='Register' check:innerText='Register' /&gt;" Guid="2261a9b0-b08d-4eda-851f-f0fe03ba30ff" InformativeScreenshot="6cdef5e8a65aad58bf746a40df8678ea.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sign up | hide.me' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="17392187d3709201e69a3c070e9ace7f.jpg" Selector="&lt;html app='chrome.exe' title='Sign up | hide.me' /&gt;" Title="Sign up | hide.me" Url="https://member.hide.me/en/user/register" />
+              </uix:NApplicationCard.TargetApp>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NApplicationCard>
+            <uga:GetEmailListConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" CurrentIndex="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualEntryFolder="{x:Null}" AllLabels="W3siSWQiOiJDSEFUIiwiTmFtZSI6IkNIQVQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNFTlQiLCJOYW1lIjoiU0VOVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiSU5CT1giLCJOYW1lIjoiSU5CT1giLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IklNUE9SVEFOVCIsIk5hbWUiOiJJTVBPUlRBTlQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlRSQVNIIiwiTmFtZSI6IlRSQVNIIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJEUkFGVCIsIk5hbWUiOiJEUkFGVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiU1BBTSIsIk5hbWUiOiJTUEFNIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9GT1JVTVMiLCJOYW1lIjoiQ0FURUdPUllfRk9SVU1TIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9VUERBVEVTIiwiTmFtZSI6IkNBVEVHT1JZX1VQREFURVMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiTmFtZSI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9QUk9NT1RJT05TIiwiTmFtZSI6IkNBVEVHT1JZX1BST01PVElPTlMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1NPQ0lBTCIsIk5hbWUiOiJDQVRFR09SWV9TT0NJQUwiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNUQVJSRUQiLCJOYW1lIjoiU1RBUlJFRCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiVU5SRUFEIiwiTmFtZSI6IlVOUkVBRCIsIlR5cGUiOiJzeXN0ZW0ifV0=" AuthScopesInvalid="False" BrowserFolder="Inbox" BrowserFolderLabelId="INBOX" ConnectionId="10ae8959-522e-4e56-bf57-d08eef57a63b" DisplayName="Get Email List hide.me " EmailList="[list_mail_act]" FolderInputSelectionMode="Browse" sap:VirtualizedContainerService.HintSize="1963.2,236" sap2010:WorkflowViewState.IdRef="GetEmailListConnections_1" ImportantOnly="False" IncludeSubfolders="False" MarkAsRead="True" MaxResults="100" StarredOnly="False" UnreadOnly="True" UseConnectionService="True" WithAttachmentsOnly="False">
+              <uga:GetEmailListConnections.Filter>
+                <ugagf:MailFilterCollection LogicalOperator="Or">
+                  <ugagf:MailFilterCollection.Filters>
+                    <ugagf:MailFilterElement DateEqualsFilter="{x:Null}" Values="{x:Null}" CollectionFilterOperator="In" Criteria="Subject" DateOperator="NewerThan" StringOperator="Contains" Value="[IN_Activation_Email_subject]" />
+                    <ugagf:MailFilterElement DateEqualsFilter="{x:Null}" Values="{x:Null}" CollectionFilterOperator="In" Criteria="Subject" DateOperator="NewerThan" StringOperator="Contains" Value="[IN_Account_Registration_Subject]" />
+                  </ugagf:MailFilterCollection.Filters>
+                </ugagf:MailFilterCollection>
+              </uga:GetEmailListConnections.Filter>
+              <uga:GetEmailListConnections.Folder>
+                <ugagm:FolderArgument ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" ManualEntryFolderName="{x:Null}" BrowserFolderId="INBOX" BrowserFolderName="Inbox" InputMode="Browse">
+                  <ugagm:FolderArgument.Backup>
+                    <usau:BackupSlot x:TypeArguments="ugage:FolderInputMode" x:Name="__ReferenceID0" StoredValue="Browse">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:Dictionary x:TypeArguments="ugage:FolderInputMode, scg:List(x:Object)" />
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </ugagm:FolderArgument.Backup>
+                </ugagm:FolderArgument>
+              </uga:GetEmailListConnections.Folder>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uga:GetEmailListConnections>
+            <If Condition="[list_mail_act.Count&gt;0 AndAlso list_mail_act(0).Subject= IN_Activation_Email_subject]" DisplayName="If subject &quot;Activate Your hide.me VPN Account Today&quot;" sap:VirtualizedContainerService.HintSize="1963.2,3017.6" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1110.4,2710.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="&quot;Start of the activation process&quot;" sap:VirtualizedContainerService.HintSize="1048,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Start of the activation process&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                  <Assign sap2010:Annotation.AnnotationText="&quot;Assign the content of the first email to a variable&quot;" DisplayName="Assign  Activate mail body " sap:VirtualizedContainerService.HintSize="1048,144.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[str_ActivateMail_Body]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[list_mail_act(0).Body]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <ui:Matches sap2010:Annotation.AnnotationText="&quot;Extract the account activation link using regex from the sent email&quot;" BuilderPattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" DisplayName="&quot;Extract the account activation link from the email&quot;" FirstMatch="[Str_Activat_Url]" sap:VirtualizedContainerService.HintSize="1048,136" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[str_ActivateMail_Body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;URL&quot;,&quot;OperationName&quot;:&quot;URL&quot;,&quot;OperationValue&quot;:&quot;(?:(?:https?|ftp|file):\\\/\\\/|www\\.|ftp\\.)(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.])*(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[a-zA-Z0-9+&amp;@#\\\/%=~_|$])&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" RegexOption="IgnoreCase, Compiled">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Matches>
+                  <uix:NApplicationCard sap2010:Annotation.AnnotationText="&quot;Activate the account and enter the username and password&quot;" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Activate Your hide.me " sap:VirtualizedContainerService.HintSize="1048,2166.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1014.4,1895.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="952,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="952,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Text="[IN_Str_User_Name]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/activate/eyJ0IjoiYWN0aXZhdGUtdXNlci1hY2NvdW50LXYzIiwibSI6eyJlbWFpbCI6ImFtamFkbWFhbmk4NDZAZ21haWwuY29tIiwiY3JlYXRlZEF0IjoiMTcxODAwOTg0NSJ9LCJzIjoiNWQzNzlkZDcwM2Q5YjU2ZTk5OTIzZjBhMDU1YWE0ODU2NGY2NDZlNmZkYjE0MjczNzMwOGRiYWE2ZDQ1N2Y1YiJ9" CVScreenId="479a2986-24a7-4f9c-a3a8-17884dcac091" CvElementArea="670, 640, 542, 79" CvType="InputBox" DesignTimeRectangle="674, 642, 538, 75" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='hide_register_username' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_register_username' tag='INPUT' type='text' class='form-control js-activation-username' placeholder='Username' aaname='Username' /&gt;" Guid="ac380075-4b3e-42ad-8b2a-c3a656e07337" InformativeScreenshot="0ebf6366f8c93c89e4ebcf63981ccc0f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Activate hide.me account | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="479a2986-24a7-4f9c-a3a8-17884dcac091" CvElementArea="670, 640, 542, 79" CvType="InputBox" DesignTimeRectangle="693, 657, 111, 45" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Username' check:innerText='Username' /&gt;" Guid="462a7482-d4a3-4368-9c2d-145278a62a65" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                            <uix:NTypeInto.VerifyOptions>
+                              <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              </uix:VerifyExecutionTypeIntoOptions>
+                            </uix:NTypeInto.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NTypeInto>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="952,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_3" IsPassword="True" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Text="amjad*123" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/activate/eyJ0IjoiYWN0aXZhdGUtdXNlci1hY2NvdW50LXYzIiwibSI6eyJlbWFpbCI6ImFtamFkbWFhbmk4NDZAZ21haWwuY29tIiwiY3JlYXRlZEF0IjoiMTcxODAwOTg0NSJ9LCJzIjoiNWQzNzlkZDcwM2Q5YjU2ZTk5OTIzZjBhMDU1YWE0ODU2NGY2NDZlNmZkYjE0MjczNzMwOGRiYWE2ZDQ1N2Y1YiJ9" CVScreenId="479a2986-24a7-4f9c-a3a8-17884dcac091" CvElementArea="670, 761, 543, 79" CvType="InputBox" DesignTimeRectangle="674, 764, 538, 75" DesignTimeScaleFactor="1.25" ElementType="InputBoxPassword" FullSelectorArgument="&lt;webctrl id='hide_register_password_first' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_register_password_first' tag='INPUT' type='password' class='form-control js-activation-password' placeholder='Password' aaname='Password' /&gt;" Guid="db00a88f-84b6-4ac1-8ced-10f820b558b1" InformativeScreenshot="d6bdc35759598cac9e789b204fd4f593.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Activate hide.me account | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="479a2986-24a7-4f9c-a3a8-17884dcac091" CvElementArea="670, 761, 543, 79" CvType="InputBox" DesignTimeRectangle="693, 779, 107, 45" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Password' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Password' tag='LABEL' type='' class='' check:innerText='Password' /&gt;" Guid="52f17eae-801b-4844-9807-8792851266ca" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                            <uix:NTypeInto.VerifyOptions>
+                              <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              </uix:VerifyExecutionTypeIntoOptions>
+                            </uix:NTypeInto.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NTypeInto>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Repeat password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="952,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_4" IsPassword="True" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Text="amjad*123" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/activate/eyJ0IjoiYWN0aXZhdGUtdXNlci1hY2NvdW50LXYzIiwibSI6eyJlbWFpbCI6ImFtamFkbWFhbmk4NDZAZ21haWwuY29tIiwiY3JlYXRlZEF0IjoiMTcxODAwOTg0NSJ9LCJzIjoiNWQzNzlkZDcwM2Q5YjU2ZTk5OTIzZjBhMDU1YWE0ODU2NGY2NDZlNmZkYjE0MjczNzMwOGRiYWE2ZDQ1N2Y1YiJ9" CVScreenId="a5551e93-e603-493c-9047-f1605adbb0a7" CvElementArea="670, 861, 543, 79" CvType="InputBox" DesignTimeRectangle="674, 864, 538, 74" DesignTimeScaleFactor="1.25" ElementType="InputBoxPassword" FullSelectorArgument="&lt;webctrl id='hide_register_password_second' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_register_password_second' tag='INPUT' type='password' class='form-control js-activation-password2' placeholder='Repeat password' aaname='Repeat password' /&gt;" Guid="5a1462d1-7e4b-4f1d-b2f4-3a9a983c2a92" InformativeScreenshot="f98e8d704c29c7bff2abac1d9ff5fbcc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Activate hide.me account | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="a5551e93-e603-493c-9047-f1605adbb0a7" CvElementArea="670, 861, 543, 79" CvType="InputBox" DesignTimeRectangle="693, 878, 189, 45" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Repeat password' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Repeat password' tag='LABEL' type='' class='' check:innerText='Repeat password' /&gt;" Guid="7faad530-4acb-4790-8380-0ef78c83c9eb" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                            <uix:NTypeInto.VerifyOptions>
+                              <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              </uix:VerifyExecutionTypeIntoOptions>
+                            </uix:NTypeInto.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NTypeInto>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Create account'" sap:VirtualizedContainerService.HintSize="952,56.8" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/activate/eyJ0IjoiYWN0aXZhdGUtdXNlci1hY2NvdW50LXYzIiwibSI6eyJlbWFpbCI6ImFtamFkbWFhbmk4NDZAZ21haWwuY29tIiwiY3JlYXRlZEF0IjoiMTcxODAwOTg0NSJ9LCJzIjoiNWQzNzlkZDcwM2Q5YjU2ZTk5OTIzZjBhMDU1YWE0ODU2NGY2NDZlNmZkYjE0MjczNzMwOGRiYWE2ZDQ1N2Y1YiJ9" CVScreenId="c2129d04-8b7b-4c21-8226-a8ae71a991e9" CvElementArea="670, 710, 573, 81" CvTextArea="871, 741, 172, 22" CvTextArgument="Create account" CvType="Button" DesignTimeRectangle="674, 713, 569, 77" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='hide_register_save' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_register_save' tag='BUTTON' type='submit' class='submit-btn' aaname='Create account' check:innerText='Create account' /&gt;" Guid="c7a7ee5b-ab2e-4363-b027-52f9e45333a7" InformativeScreenshot="381cdbb20dee5b1d48c10d6357239843.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Activate hide.me account | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                            <uix:NClick.VerifyOptions>
+                              <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionOptions.Retry>
+                                <uix:VerifyExecutionOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionOptions.Timeout>
+                              </uix:VerifyExecutionOptions>
+                            </uix:NClick.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                          <uix:NCheckState sap2010:Annotation.AnnotationText="&quot;Log out after activating the account&quot;" DisplayName="Check App State 'Your Free'" Exists="[Boll_login]" sap:VirtualizedContainerService.HintSize="952,663.2" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Timeout="30" Version="V3">
+                            <uix:NCheckState.IfExists>
+                              <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,197.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Default="https://member.hide.me/en/user/logout" Name="Str_Logout" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NGoToUrl DisplayName="Go To URL log out" sap:VirtualizedContainerService.HintSize="387.2,107.2" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[IN_Str_Logout]" Version="V3">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </uix:NGoToUrl>
+                              </Sequence>
+                            </uix:NCheckState.IfExists>
+                            <uix:NCheckState.IfNotExists>
+                              <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,381.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Throw Exception="[New BusinessRuleException(&quot;dosent login&quot;)]" sap:VirtualizedContainerService.HintSize="387.2,122.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;dosent login&quot;]" />
+                              </Sequence>
+                            </uix:NCheckState.IfNotExists>
+                            <uix:NCheckState.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/" DesignTimeRectangle="593, 415, 1097, 1197" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl class='col-md-9' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='col-md-9' tag='DIV' type='' aaname='                                                                             &amp;#x9;    &amp;#x9;                  ' check:innerText='Your Free package has been activated.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;How to setup hide.me VPN&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;The easiest way is by downloading' /&gt;" Guid="e5408bea-85f2-4b63-b21f-8626a956a7f9" ImageBase64="" InformativeScreenshot="74f3ba5cd71ea19d4a6ce985ff4fa32b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard | hide.me' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                            </uix:NCheckState.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NCheckState>
+                          <ui:LogMessage DisplayName="&quot;End of account activation process&quot;" sap:VirtualizedContainerService.HintSize="952,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;End of account activation process&quot;]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIoSURBVDhPjVNPSBRRGJ91dmbeewNdOkWHDtGxg4fOXpOoQwSpkdBBBKPYgg6RG5aUVERBKSxGlCEpi0UhWKCsUvlnxlmokBIPHYLEtojQrZld4tf3njuzs8VShx9v9vv92fd9840GIPG/YPmfO2wvOCI8PyPcwOVe8KBuABG67ZQaueufELm1MTbsFPjMF4jFIAa/oEmhtgRLy4Ezp9wknPU0kc8J36WIT38Gy76GfjQF89L9PwKCrCa8Uic9zBECPr4C/vJbJOBTq+pko3kkO7vBJz9FnOLdoFWjh1Xh+hDzG5tmOsXcelVEN7AGJ6G3nwZ79DYeUN4yi62aTKEfv1TR+QH+4mtVRMFsaJb+PY2GfW0we+9FnO36M5VZIaEGFZoqYE+XIYfGpwtInrwM/VAHkl094Lk1xZPnVBQgQUU5PIiFYrUFOtmT9zC6B9DQ3ALz4l1Yt8cVZ3n+rpoACb4YXFPGGNjwPIzzGegH2mGcvRXWV0JPTYAEvdtBKZID5RMf1OTNqyNIpvpUiLyh7ZVuhPq/Aqig224wag29UkOUPeutx9UuGOf6wUY8sHy5KaavDVBFWiz27OOUvIl54Q7MKw9VmHnzMczr2SItnRFp48Y45Du2BiaWpUntiWyLFstI9UX9S9QNEPnidv3Ymf1s7M27yuA222npWtCaD+8MdXUDQpjpzG4yL1VCykZHT6O29+CekP9ngITtbGwjs/zAems5JH4DHPGcvmx9vGYAAAAASUVORK5CYII=" InformativeScreenshot="20672464eae01ed159ebd93559da91ac.jpg" Selector="&lt;html app='chrome.exe' /&gt;" Title="Sign up | hide.me" Url="[Str_Activat_Url]" />
+                    </uix:NApplicationCard.TargetApp>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NApplicationCard>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="&quot;The account does not require activation.&quot;" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;The account does not require activation.&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                </Sequence>
+              </If.Else>
+            </If>
+            <If sap2010:Annotation.AnnotationText="&quot;If the account is already activated, request a password reset.&quot;" Condition="[list_mail_act.Count&gt;0 AndAlso list_mail_act(0).Subject =  IN_Account_Registration_Subject]" DisplayName="If subject &quot;Account Registration Attempt&quot;" sap:VirtualizedContainerService.HintSize="1963.2,4617.6" sap2010:WorkflowViewState.IdRef="If_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1929.6,4161.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="&quot;Start of the registration process&quot;" sap:VirtualizedContainerService.HintSize="1867.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Start of the registration process&quot;]" />
+                  <Assign sap2010:Annotation.AnnotationText="" DisplayName="&quot;Assign RegistrationMail to a variable.&quot;" sap:VirtualizedContainerService.HintSize="1867.2,144.8" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[Str_RegistrationMail_Body]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[list_mail_act(0).Body]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <ui:Matches BuilderPattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" DisplayName="&quot;Extract the Registration link using regex.&quot;" FirstMatch="[str_Regist_Url]" sap:VirtualizedContainerService.HintSize="1867.2,56.8" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[Str_RegistrationMail_Body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;URL&quot;,&quot;OperationName&quot;:&quot;URL&quot;,&quot;OperationValue&quot;:&quot;(?:(?:https?|ftp|file):\\\/\\\/|www\\.|ftp\\.)(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.])*(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[a-zA-Z0-9+&amp;@#\\\/%=~_|$])&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" RegexOption="IgnoreCase, Compiled">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Matches>
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Activate Your hide.me " sap:VirtualizedContainerService.HintSize="1867.2,3696.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1833.6,3456.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="1771.2,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_3" />
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1771.2,56.8" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Text="[IN_Str_User_Name]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/reset" CVScreenId="0507b763-49de-48bf-a43a-2a8531001907" CvElementArea="649, 625, 617, 79" CvType="InputBox" DesignTimeRectangle="652, 627, 613, 75" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='hide_password_reset_username' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_password_reset_username' tag='INPUT' type='text' class='form-control' placeholder='Username' aaname='' /&gt;" Guid="4d6136a4-a4cf-4ff8-918a-96c6f92cce27" InformativeScreenshot="e283bcb3a8b80dd2f638e29535aa3f16.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Reset your password | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="0507b763-49de-48bf-a43a-2a8531001907" CvElementArea="649, 625, 617, 79" CvType="InputBox" DesignTimeRectangle="671, 642, 111, 45" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Username' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Username' tag='LABEL' type='' class='' check:innerText='Username' /&gt;" Guid="360b8b9a-af85-45d1-9840-dd9299e0c4d3" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                            <uix:NTypeInto.VerifyOptions>
+                              <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                              </uix:VerifyExecutionTypeIntoOptions>
+                            </uix:NTypeInto.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NTypeInto>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="1771.2,56.8" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/reset" CVScreenId="f6b50537-4374-430d-9082-e8a945a08ef6" CvElementArea="649, 724, 616, 82" CvTextArea="915, 753, 85, 23" CvTextArgument="Submit" CvType="Button" DesignTimeRectangle="652, 727, 613, 77" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='hide_password_reset_save' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='hide_password_reset_save' tag='BUTTON' type='submit' class='submit-btn' aaname='Submit' check:innerText='Submit' /&gt;" Guid="4507ac77-abe8-4108-818e-d9a1d8d10197" InformativeScreenshot="356b7750bcc66a9c3dddb75c7de68469.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Reset your password | hide.me' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                            <uix:NClick.VerifyOptions>
+                              <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                <uix:VerifyExecutionOptions.Retry>
+                                  <InArgument x:TypeArguments="x:Boolean" />
+                                </uix:VerifyExecutionOptions.Retry>
+                                <uix:VerifyExecutionOptions.Timeout>
+                                  <InArgument x:TypeArguments="x:Double" />
+                                </uix:VerifyExecutionOptions.Timeout>
+                              </uix:VerifyExecutionOptions>
+                            </uix:NClick.VerifyOptions>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                          <uix:NCheckState sap2010:Annotation.AnnotationText="&quot;Initiate the password reset process and receive an email containing the password reset link.&quot;" DisplayName="Check App State 'Your Free'" Exists="[Boll_login]" sap:VirtualizedContainerService.HintSize="1771.2,3027.2" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="4bebb8b2-e7df-49f1-937b-d5bd4bd19fd9" Timeout="30" Version="V3">
+                            <uix:NCheckState.IfExists>
+                              <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1268.8,2745.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence sap2010:Annotation.AnnotationText="&quot;Change the password, log in, and then log out.&quot;" DisplayName="Reset_Password" sap:VirtualizedContainerService.HintSize="1206.4,2655.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="scg:List(ugm:GmailMessage)" Name="List_Mail_Reset" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uga:GetEmailListConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" CurrentIndex="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" ManualEntryFolder="{x:Null}" AllLabels="W3siSWQiOiJDSEFUIiwiTmFtZSI6IkNIQVQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNFTlQiLCJOYW1lIjoiU0VOVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiSU5CT1giLCJOYW1lIjoiSU5CT1giLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IklNUE9SVEFOVCIsIk5hbWUiOiJJTVBPUlRBTlQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlRSQVNIIiwiTmFtZSI6IlRSQVNIIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJEUkFGVCIsIk5hbWUiOiJEUkFGVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiU1BBTSIsIk5hbWUiOiJTUEFNIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9GT1JVTVMiLCJOYW1lIjoiQ0FURUdPUllfRk9SVU1TIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9VUERBVEVTIiwiTmFtZSI6IkNBVEVHT1JZX1VQREFURVMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiTmFtZSI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9QUk9NT1RJT05TIiwiTmFtZSI6IkNBVEVHT1JZX1BST01PVElPTlMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1NPQ0lBTCIsIk5hbWUiOiJDQVRFR09SWV9TT0NJQUwiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNUQVJSRUQiLCJOYW1lIjoiU1RBUlJFRCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiVU5SRUFEIiwiTmFtZSI6IlVOUkVBRCIsIlR5cGUiOiJzeXN0ZW0ifV0=" AuthScopesInvalid="False" BrowserFolder="Inbox" BrowserFolderLabelId="INBOX" ConnectionId="10ae8959-522e-4e56-bf57-d08eef57a63b" DisplayName="Get Email List" EmailList="[List_mail_reset]" FolderInputSelectionMode="Browse" sap:VirtualizedContainerService.HintSize="1144,236" sap2010:WorkflowViewState.IdRef="GetEmailListConnections_2" ImportantOnly="False" IncludeSubfolders="False" MarkAsRead="True" MaxResults="100" StarredOnly="False" UnreadOnly="True" UseConnectionService="True" WithAttachmentsOnly="False">
+                                    <uga:GetEmailListConnections.Filter>
+                                      <ugagf:MailFilterCollection LogicalOperator="Or">
+                                        <ugagf:MailFilterCollection.Filters>
+                                          <ugagf:MailFilterElement DateEqualsFilter="{x:Null}" Values="{x:Null}" CollectionFilterOperator="In" Criteria="Subject" DateOperator="NewerThan" StringOperator="Contains" Value="[IN_Request_to_Reset_Password]" />
+                                        </ugagf:MailFilterCollection.Filters>
+                                      </ugagf:MailFilterCollection>
+                                    </uga:GetEmailListConnections.Filter>
+                                    <uga:GetEmailListConnections.Folder>
+                                      <ugagm:FolderArgument ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" ManualEntryFolderName="{x:Null}" BrowserFolderId="INBOX" BrowserFolderName="Inbox" InputMode="Browse">
+                                        <ugagm:FolderArgument.Backup>
+                                          <usau:BackupSlot x:TypeArguments="ugage:FolderInputMode" x:Name="__ReferenceID1" StoredValue="Browse">
+                                            <usau:BackupSlot.BackupValues>
+                                              <scg:Dictionary x:TypeArguments="ugage:FolderInputMode, scg:List(x:Object)" />
+                                            </usau:BackupSlot.BackupValues>
+                                          </usau:BackupSlot>
+                                        </ugagm:FolderArgument.Backup>
+                                      </ugagm:FolderArgument>
+                                    </uga:GetEmailListConnections.Folder>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uga:GetEmailListConnections>
+                                  <If Condition="[List_Mail_Reset.Count &gt;0 AndAlso  List_Mail_Reset(0).Subject =  IN_Request_to_Reset_Password]" DisplayName="If subject &quot;Request to Reset Password&quot;" sap:VirtualizedContainerService.HintSize="1144,2272.8" sap2010:WorkflowViewState.IdRef="If_2">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1110.4,1822.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="Str_Reset_URl" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1048,176" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Initiate the password change process.&quot;]" />
+                                        <Assign sap:VirtualizedContainerService.HintSize="1048,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[Str_ResetMail_Body]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[List_Mail_Reset(0).Body]</InArgument>
+                                          </Assign.Value>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Assign>
+                                        <ui:Matches BuilderPattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" DisplayName="Find Matching Patterns &quot;Request to Reset Password&quot;" FirstMatch="[Str_Reset_URl]" sap:VirtualizedContainerService.HintSize="1048,92" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[Str_ResetMail_Body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;URL&quot;,&quot;OperationName&quot;:&quot;URL&quot;,&quot;OperationValue&quot;:&quot;(?:(?:https?|ftp|file):\\\/\\\/|www\\.|ftp\\.)(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.])*(?:\\([-a-zA-Z0-9+&amp;@#\\\/%=~_|$?!:,.]*\\)|[a-zA-Z0-9+&amp;@#\\\/%=~_|$])&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.])*(?:\([-a-zA-Z0-9+&amp;@#\/%=~_|$?!:,.]*\)|[a-zA-Z0-9+&amp;@#\/%=~_|$])" RegexOption="IgnoreCase, Compiled" />
+                                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Activate Your hide.me " sap:VirtualizedContainerService.HintSize="1048,1352" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="feb59c40-1c74-480e-9f26-853bf6f9e6d3" Version="V2">
+                                          <uix:NApplicationCard.Body>
+                                            <ActivityAction x:TypeArguments="x:Object">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1014.4,1112" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                <Sequence.Variables>
+                                                  <Variable x:TypeArguments="x:Boolean" Name="Boll_login2" />
+                                                </Sequence.Variables>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="952,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_4" />
+                                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="952,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_6" IsPassword="True" ScopeIdentifier="feb59c40-1c74-480e-9f26-853bf6f9e6d3" Text="amjad*123[k(Enter)]" Version="V3">
+                                                  <uix:NTypeInto.Target>
+                                                    <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/password/token/eyJ0IjoicmVzZXQtcGFzc3dvcmQiLCJtIjp7ImFjY291bnRJZCI6IjliOGIxNjM0LWFhZGMtNDZkMC04MTQ3LTM3YjQ3Zjg5MWQ2NCIsImNyZWF0ZWRBdCI6IjE3MTgwMTQ0MTMiLCJzZWVkIjoiNTA5ZGIxYmFhMTkyNGY4MmVlNzRlODU2N2E5ZDFiNjQifSwicyI6IjgyZGFhMWFkOWNmN2Q4ZGM0NDVlZjViNDY2NTViZWRiMmZlMTFlMDM4MGQ0NTA4ZTczMjg2MDQ0NDk3YWFjMDkifQ==" CVScreenId="9f1ace3d-ee5a-477e-913e-6334a8727c09" CvElementArea="659, 481, 617, 78" CvType="InputBox" DesignTimeRectangle="663, 483, 612, 74" DesignTimeScaleFactor="1.25" ElementType="InputBoxPassword" FullSelectorArgument="&lt;webctrl id='user_password_password' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='user_password_password' tag='INPUT' type='password' class='form-control' placeholder='Password' aaname='Password' /&gt;" Guid="60c618bd-7450-49ad-abaf-122a87d33d12" InformativeScreenshot="fa84676367b54355631234a422775523.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Enter your new password | hide.me' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                                      <uix:TargetAnchorable.Anchors>
+                                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                          <uix:Target CVScreenId="9f1ace3d-ee5a-477e-913e-6334a8727c09" CvElementArea="659, 481, 617, 78" CvType="InputBox" DesignTimeRectangle="682, 497, 106, 45" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='' aaname='Password' check:innerText='Password' /&gt;" Guid="099b21b3-0400-4482-9a79-215997bdeb8b" SearchSteps="FuzzySelector, CV" />
+                                                        </scg:List>
+                                                      </uix:TargetAnchorable.Anchors>
+                                                    </uix:TargetAnchorable>
+                                                  </uix:NTypeInto.Target>
+                                                  <uix:NTypeInto.VerifyOptions>
+                                                    <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                                        <InArgument x:TypeArguments="x:Boolean" />
+                                                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                                        <InArgument x:TypeArguments="x:Double" />
+                                                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                                    </uix:VerifyExecutionTypeIntoOptions>
+                                                  </uix:NTypeInto.VerifyOptions>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </uix:NTypeInto>
+                                                <uix:NCheckState DisplayName="Check App State 'Your Free'" sap:VirtualizedContainerService.HintSize="952,509.6" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="feb59c40-1c74-480e-9f26-853bf6f9e6d3" Timeout="30" Version="V3">
+                                                  <uix:NCheckState.IfExists>
+                                                    <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,197.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                                      <Sequence.Variables>
+                                                        <Variable x:TypeArguments="x:String" Default="https://member.hide.me/en/user/logout" Name="Str_Logout" />
+                                                      </Sequence.Variables>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <uix:NGoToUrl DisplayName="Go To URL Log out" sap:VirtualizedContainerService.HintSize="387.2,107.2" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="[IN_Str_Logout]" Version="V3" />
+                                                    </Sequence>
+                                                  </uix:NCheckState.IfExists>
+                                                  <uix:NCheckState.IfNotExists>
+                                                    <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,259.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;dosent login&quot;]" />
+                                                    </Sequence>
+                                                  </uix:NCheckState.IfNotExists>
+                                                  <uix:NCheckState.Target>
+                                                    <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/" DesignTimeRectangle="9, 225, 1899, 1387" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl tag='MAIN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='MAIN' type='' class='page-dashboard' aaname='              ' check:innerText='Member Settings&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Dashboard&amp;#xD;&amp;#xA;Account Settings&amp;#xD;&amp;#xA;Purchase History&amp;#xD;&amp;#xA;Pricing&amp;#xD;&amp;#xA;Support&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;VPN Features&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Server' /&gt;" Guid="ab64cad3-20ca-4304-9c04-c60e2023b98a" InformativeScreenshot="d4b972185df59dc3ccf1247d852dbb40.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dashboard | hide.me' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                                                  </uix:NCheckState.Target>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </uix:NCheckState>
+                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="952,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;End of the logout process.&quot;]" />
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </uix:NApplicationCard.Body>
+                                          <uix:NApplicationCard.TargetApp>
+                                            <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIoSURBVDhPjVNPSBRRGJ91dmbeewNdOkWHDtGxg4fOXpOoQwSpkdBBBKPYgg6RG5aUVERBKSxGlCEpi0UhWKCsUvlnxlmokBIPHYLEtojQrZld4tf3njuzs8VShx9v9vv92fd9840GIPG/YPmfO2wvOCI8PyPcwOVe8KBuABG67ZQaueufELm1MTbsFPjMF4jFIAa/oEmhtgRLy4Ezp9wknPU0kc8J36WIT38Gy76GfjQF89L9PwKCrCa8Uic9zBECPr4C/vJbJOBTq+pko3kkO7vBJz9FnOLdoFWjh1Xh+hDzG5tmOsXcelVEN7AGJ6G3nwZ79DYeUN4yi62aTKEfv1TR+QH+4mtVRMFsaJb+PY2GfW0we+9FnO36M5VZIaEGFZoqYE+XIYfGpwtInrwM/VAHkl094Lk1xZPnVBQgQUU5PIiFYrUFOtmT9zC6B9DQ3ALz4l1Yt8cVZ3n+rpoACb4YXFPGGNjwPIzzGegH2mGcvRXWV0JPTYAEvdtBKZID5RMf1OTNqyNIpvpUiLyh7ZVuhPq/Aqig224wag29UkOUPeutx9UuGOf6wUY8sHy5KaavDVBFWiz27OOUvIl54Q7MKw9VmHnzMczr2SItnRFp48Y45Du2BiaWpUntiWyLFstI9UX9S9QNEPnidv3Ymf1s7M27yuA222npWtCaD+8MdXUDQpjpzG4yL1VCykZHT6O29+CekP9ngITtbGwjs/zAems5JH4DHPGcvmx9vGYAAAAASUVORK5CYII=" InformativeScreenshot="20672464eae01ed159ebd93559da91ac.jpg" Selector="&lt;html app='chrome.exe' /&gt;" Title="Sign up | hide.me" Url="[Str_Reset_URl]" />
+                                          </uix:NApplicationCard.TargetApp>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uix:NApplicationCard>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,287.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="353.6,198.4" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Registration process does not exist.&quot;]">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:LogMessage>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </Sequence>
+                            </uix:NCheckState.IfExists>
+                            <uix:NCheckState.IfNotExists>
+                              <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,381.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Throw Exception="[New BusinessRuleException(&quot;The password reset request was not processed correctly.&quot;)]" sap:VirtualizedContainerService.HintSize="387.2,122.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;dosent login&quot;]" />
+                              </Sequence>
+                            </uix:NCheckState.IfNotExists>
+                            <uix:NCheckState.Target>
+                              <uix:TargetAnchorable BrowserURL="https://member.hide.me/en/user/reset" DesignTimeRectangle="9, 225, 1920, 804" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl tag='MAIN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='MAIN' type='' class='page-reset' aaname='                                    ' check:innerText='We sent you an email with instructions how to reset your password. If you don&amp;apos;t receive it within 5' /&gt;" Guid="e937ca63-ab56-472a-a83f-7f437ddc7794" InformativeScreenshot="89d9e520adbc3adccfeb0d61a8defdf4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Reset your password | hide.me' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                            </uix:NCheckState.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NCheckState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1771.2,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;End of the registration process.&quot;]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIoSURBVDhPjVNPSBRRGJ91dmbeewNdOkWHDtGxg4fOXpOoQwSpkdBBBKPYgg6RG5aUVERBKSxGlCEpi0UhWKCsUvlnxlmokBIPHYLEtojQrZld4tf3njuzs8VShx9v9vv92fd9840GIPG/YPmfO2wvOCI8PyPcwOVe8KBuABG67ZQaueufELm1MTbsFPjMF4jFIAa/oEmhtgRLy4Ezp9wknPU0kc8J36WIT38Gy76GfjQF89L9PwKCrCa8Uic9zBECPr4C/vJbJOBTq+pko3kkO7vBJz9FnOLdoFWjh1Xh+hDzG5tmOsXcelVEN7AGJ6G3nwZ79DYeUN4yi62aTKEfv1TR+QH+4mtVRMFsaJb+PY2GfW0we+9FnO36M5VZIaEGFZoqYE+XIYfGpwtInrwM/VAHkl094Lk1xZPnVBQgQUU5PIiFYrUFOtmT9zC6B9DQ3ALz4l1Yt8cVZ3n+rpoACb4YXFPGGNjwPIzzGegH2mGcvRXWV0JPTYAEvdtBKZID5RMf1OTNqyNIpvpUiLyh7ZVuhPq/Aqig224wag29UkOUPeutx9UuGOf6wUY8sHy5KaavDVBFWiz27OOUvIl54Q7MKw9VmHnzMczr2SItnRFp48Y45Du2BiaWpUntiWyLFstI9UX9S9QNEPnidv3Ymf1s7M27yuA222npWtCaD+8MdXUDQpjpzG4yL1VCykZHT6O29+CekP9ngITtbGwjs/zAems5JH4DHPGcvmx9vGYAAAAASUVORK5CYII=" InformativeScreenshot="20672464eae01ed159ebd93559da91ac.jpg" Selector="&lt;html app='chrome.exe' /&gt;" Title="Sign up | hide.me" Url="[str_Regist_Url]" />
+                    </uix:NApplicationCard.TargetApp>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NApplicationCard>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,254.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Registration process does not exist.&quot;]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1963.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_15" Message="[Str_RegistrationMail_Body]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+          </Sequence>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="2028.8,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="&quot;The account was not activated.&quot;" />
+              </ActivityAction.Argument>
+              <Rethrow sap:VirtualizedContainerService.HintSize="334.4,24.8" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2062.4,48" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;End of account registration&quot;]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:LogMessage>
+    </Sequence>
+  </Sequence>
+</Activity>
